@@ -1,0 +1,24 @@
+{
+  "name": "Jakel Plumbing, Heating & Electrical",
+  "short_name": "Jakel Plumbing",
+  "description": "Professional plumbing, heating, electrical, excavation, water systems, and septic services in Abbotsford, WI since 1993",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#443669",
+  "icons": [
+    {
+      "src": "/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "orientation": "portrait-primary",
+  "categories": ["business", "utilities"],
+  "lang": "en-US"
+}
