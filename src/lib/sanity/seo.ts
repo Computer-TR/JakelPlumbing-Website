@@ -1,6 +1,6 @@
-import { NextSeoProps } from 'next-seo'
+import { DefaultSeo } from 'next-seo'
 
-const SEO: NextSeoProps = {
+const SEO = {
   titleTemplate: '%s | Your Plumbing Company',
   defaultTitle: 'Professional Plumbing Services | Your Plumbing Company',
   description:
