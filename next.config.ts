@@ -119,6 +119,7 @@ const nextConfig: NextConfig = {
       // },
     ];
   },
+  
 
   // Rewrites (if needed for API routes)
   async rewrites() {
