@@ -11,7 +11,8 @@ export default defineConfig({
 
   basePath: '/studio',
 
-  plugins: [deskTool(), visionTool()],
+  plugins: [deskTool()],
+
 
   schema: {
     types: schemaTypes,
