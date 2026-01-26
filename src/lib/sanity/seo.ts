@@ -1,6 +1,6 @@
-import { DefaultSeo } from 'next-seo'
+// src/lib/sanity/seo.ts
 
-const SEO = {
+export const SEO = {
   titleTemplate: '%s | Your Plumbing Company',
   defaultTitle: 'Professional Plumbing Services | Your Plumbing Company',
   description:
@@ -30,6 +30,4 @@ const SEO = {
       href: '/favicon.ico',
     },
   ],
-}
-
-export default SEO
+} as const
