@@ -31,7 +31,6 @@ const nextConfig: NextConfig = {
 
   // Performance optimizations
   reactStrictMode: true,
-  swcMinify: true,
   poweredByHeader: false,
 
   // SEO and Security Headers
