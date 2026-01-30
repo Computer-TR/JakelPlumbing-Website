@@ -1,35 +1,50 @@
 'use client'
 
+import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { FaPhone, FaEnvelope, FaMapMarkerAlt, FaClock } from 'react-icons/fa'
 
 export default function Contact() {
+  const [loading, setLoading] = useState(false)
+  const [success, setSuccess] = useState(false)
+  const [error, setError] = useState('')
+
   const contactInfo = [
-    {
-      icon: FaPhone,
-      title: 'Call Us',
-      info: '(715) 223-6563',
-      link: 'tel:+17152236563',
-    },
-    {
-      icon: FaEnvelope,
-      title: 'Email Us',
-      info: 'info@jakelplumbing.com',
-      link: 'mailto:info@jakelplumbing.com',
-    },
-    {
-      icon: FaMapMarkerAlt,
-      title: 'Visit Us',
-      info: '800 Old Highway 29, Abbotsford, WI',
-      link: 'https://maps.google.com/?q=800+Old+Highway+29+Abbotsford+WI',
-    },
-    {
-      icon: FaClock,
-      title: 'Working Hours',
-      info: 'Mon-Fri: 7:00 AM – 5:00 PM',
-      link: '#',
-    },
+    { icon: FaPhone, title: 'Call Us', info: '(715) 223-6563', link: 'tel:+17152236563' },
+    { icon: FaEnvelope, title: 'Email Us', info: 'info@jakelplumbing.com', link: 'mailto:info@jakelplumbing.com' },
+    { icon: FaMapMarkerAlt, title: 'Visit Us', info: '800 Old Highway 29, Abbotsford, WI', link: 'https://maps.google.com/?q=800+Old+Highway+29+Abbotsford+WI' },
+    { icon: FaClock, title: 'Working Hours', info: 'Mon-Fri: 7:00 AM – 5:00 PM', link: '#' },
   ]
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    setLoading(true)
+    setError('')
+    setSuccess(false)
+
+    const formData = new FormData(e.currentTarget)
+    const data = Object.fromEntries(formData.entries())
+
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      })
+
+      if (res.ok) {
+        setSuccess(true)
+        e.currentTarget.reset()
+      } else {
+        const result = await res.json()
+        setError(result.error || 'Something went wrong')
+      }
+    } catch (err) {
+      setError('Something went wrong')
+    } finally {
+      setLoading(false)
+    }
+  }
 
   return (
     <section id="contact" className="section-padding bg-white">
@@ -60,47 +75,54 @@ export default function Contact() {
             className="glass-effect p-8 rounded-3xl"
           >
             <h3 className="text-2xl font-bold mb-6 text-dark">Send Us a Message</h3>
-            <form className="space-y-6">
+
+            {/* Feedback messages */}
+            {success && <p className="text-green-600 font-medium mb-4">Your message has been sent successfully!</p>}
+            {error && <p className="text-red-600 font-medium mb-4">{error}</p>}
+
+            <form className="space-y-6" onSubmit={handleSubmit}>
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
-                  <label className="block text-gray-700 font-medium mb-2">
-                    Full Name
-                  </label>
+                  <label className="block text-gray-700 font-medium mb-2">Full Name</label>
                   <input
                     type="text"
-                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-primary-700 focus:ring-2 focus:ring-primary-200 outline-none transition-all"
+                    name="name"
                     placeholder="John Doe"
+                    required
+                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-primary-700 focus:ring-2 focus:ring-primary-200 outline-none transition-all"
                   />
                 </div>
                 <div>
-                  <label className="block text-gray-700 font-medium mb-2">
-                    Phone Number
-                  </label>
+                  <label className="block text-gray-700 font-medium mb-2">Phone Number</label>
                   <input
                     type="tel"
-                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-primary-700 focus:ring-2 focus:ring-primary-200 outline-none transition-all"
+                    name="phone"
                     placeholder="(715) 123-4567"
+                    required
+                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-primary-700 focus:ring-2 focus:ring-primary-200 outline-none transition-all"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block text-gray-700 font-medium mb-2">
-                  Email Address
-                </label>
+                <label className="block text-gray-700 font-medium mb-2">Email Address</label>
                 <input
                   type="email"
-                  className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-primary-700 focus:ring-2 focus:ring-primary-200 outline-none transition-all"
+                  name="email"
                   placeholder="john@example.com"
+                  required
+                  className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-primary-700 focus:ring-2 focus:ring-primary-200 outline-none transition-all"
                 />
               </div>
 
               <div>
-                <label className="block text-gray-700 font-medium mb-2">
-                  Service Type
-                </label>
-                <select className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-primary-700 focus:ring-2 focus:ring-primary-200 outline-none transition-all">
-                  <option>Select a service</option>
+                <label className="block text-gray-700 font-medium mb-2">Service Type</label>
+                <select
+                  name="service"
+                  required
+                  className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-primary-700 focus:ring-2 focus:ring-primary-200 outline-none transition-all"
+                >
+                  <option value="">Select a service</option>
                   <option>Plumbing</option>
                   <option>Heating</option>
                   <option>Electrical</option>
@@ -112,21 +134,22 @@ export default function Contact() {
               </div>
 
               <div>
-                <label className="block text-gray-700 font-medium mb-2">
-                  Message
-                </label>
+                <label className="block text-gray-700 font-medium mb-2">Message</label>
                 <textarea
+                  name="message"
                   rows={4}
-                  className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-primary-700 focus:ring-2 focus:ring-primary-200 outline-none transition-all resize-none"
                   placeholder="Describe your needs..."
+                  required
+                  className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-primary-700 focus:ring-2 focus:ring-primary-200 outline-none transition-all resize-none"
                 />
               </div>
 
               <button
                 type="submit"
-                className="w-full bg-gradient-to-r from-primary-700 to-accent-500 text-white px-8 py-4 rounded-full font-semibold text-lg hover:shadow-2xl transform hover:scale-105 transition-all"
+                disabled={loading}
+                className="w-full bg-gradient-to-r from-primary-700 to-accent-500 text-white px-8 py-4 rounded-full font-semibold text-lg hover:shadow-2xl transform hover:scale-105 transition-all disabled:opacity-50"
               >
-                Send Message
+                {loading ? 'Sending...' : 'Send Message'}
               </button>
             </form>
           </motion.div>
@@ -154,9 +177,7 @@ export default function Contact() {
                   <item.icon className="text-white text-xl" />
                 </div>
                 <div>
-                  <h4 className="font-bold text-lg text-dark mb-1">
-                    {item.title}
-                  </h4>
+                  <h4 className="font-bold text-lg text-dark mb-1">{item.title}</h4>
                   <p className="text-gray-600">{item.info}</p>
                 </div>
               </motion.a>

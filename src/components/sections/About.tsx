@@ -17,11 +17,23 @@ export default function About() {
     { icon: FaThumbsUp, number: '100%', label: 'Satisfaction Rate' },
   ]
 
+  const images = [
+    '/img1.jpg',
+    '/img2.jpg',
+    '/img3.jpg',
+    '/img4.jpg',
+    '/img5.jpg',
+    '/img6.jpg',
+    '/img7.jpg',
+    '/img8.jpg',
+    '/img9.jpg',
+  ]
+
   return (
     <section id="about" className="section-padding bg-gradient-to-br from-slate-50 to-purple-50">
       <div className="container-custom">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* Left - Image Carousel - Full Width */}
+          {/* Left - Image */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -30,28 +42,46 @@ export default function About() {
             className="w-full"
           >
             <div className="relative h-[600px] rounded-3xl overflow-hidden shadow-2xl bg-gradient-to-br from-slate-50 to-purple-50">
-              {/* Swiper Carousel */}
-              <Swiper
-                modules={[Autoplay, Pagination, Navigation]}
-                autoplay={{ delay: 3500, disableOnInteraction: false }}
-                pagination={{ clickable: true }}
-                navigation
-                loop
-                className="h-full w-full about-swiper"
-              >
-                {[
-                  '/img1.jpg',
-                  '/img2.jpg',
-                  '/img3.jpg',
-                  '/img4.jpg',
-                  '/img5.jpg',
-                  '/img6.jpg',
-                  '/img7.jpg',
-                  '/img8.jpg',
-                ].map((src, index) => (
-                  <SwiperSlide key={index}>
-                    <div className="relative h-full w-full flex items-center justify-center p-0">
-                      <div className="relative w-full h-full">
+              {/* Carousel for desktop */}
+              <div className="hidden lg:block h-full w-full">
+                <Swiper
+                  modules={[Autoplay, Pagination, Navigation]}
+                  autoplay={{ delay: 3500, disableOnInteraction: false }}
+                  pagination={{ clickable: true }}
+                  navigation
+                  loop
+                  className="h-full w-full about-swiper"
+                >
+                  {images.map((src, index) => (
+                    <SwiperSlide key={index}>
+                      <div className="relative h-full w-full flex items-center justify-center p-0">
+                        <div className="relative w-full h-full">
+                          <Image
+                            src={src}
+                            alt={`Jakel Plumbing photo ${index + 1}`}
+                            fill
+                            style={{ objectFit: 'contain' }}
+                            priority={index === 0}
+                          />
+                        </div>
+                      </div>
+                    </SwiperSlide>
+                  ))}
+                </Swiper>
+              </div>
+
+              {/* Mobile carousel */}
+              {/* <div className="block lg:hidden h-full w-full relative">
+                <Swiper
+                  modules={[Autoplay]}
+                  autoplay={{ delay: 2500, disableOnInteraction: false }}
+                  loop
+                  slidesPerView={1}
+                  className="h-full w-full"
+                >
+                  {images.map((src, index) => (
+                    <SwiperSlide key={index}>
+                      <div className="relative h-full w-full">
                         <Image
                           src={src}
                           alt={`Jakel Plumbing photo ${index + 1}`}
@@ -60,13 +90,25 @@ export default function About() {
                           priority={index === 0}
                         />
                       </div>
-                    </div>
-                  </SwiperSlide>
-                ))}
-              </Swiper>
+                    </SwiperSlide>
+                  ))}
+                </Swiper>
+              </div> */}
+
+
+              {/* Static image for mobile */}
+              <div className="block lg:hidden h-full w-full relative">
+                <Image
+                  src={images[0]}
+                  alt="Jakel Plumbing"
+                  fill
+                  style={{ objectFit: 'contain' }}
+                  priority
+                />
+              </div>
             </div>
 
-            {/* Floating badge - centered below */}
+            {/* Floating badge */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -96,19 +138,19 @@ export default function About() {
           >
             <div>
               <span className="text-accent-500 font-semibold text-lg">About Us</span>
-              <h2 className="text-4xl md:text-5xl font-bold mt-4 mb-6 text-dark">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mt-4 mb-6 text-dark">
                 Your Trusted Experts Since 1993
               </h2>
-              <p className="text-xl text-gray-600 leading-relaxed mb-6">
+              <p className="text-base sm:text-lg md:text-xl text-gray-600 leading-relaxed mb-6">
                 Jakel Plumbing, Heating & Electrical Contractors, Inc. is a full-service mechanical and electrical contracting business based in Abbotsford, Wisconsin. Founded in 1993 by Paul A. Jakel, we've been serving clients throughout Wisconsin for over three decades.
               </p>
-              <p className="text-lg text-gray-600 leading-relaxed">
+              <p className="text-sm sm:text-base md:text-lg text-gray-600 leading-relaxed">
                 We specialize in plumbing, heating, electrical installation and repair, excavation, water system and cross-connection services, and soil testing/septic systems for residential, commercial, agricultural, food, and industrial sectors.
               </p>
             </div>
 
             {/* Stats Grid */}
-            <div className="grid grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               {stats.map((stat, index) => (
                 <motion.div
                   key={index}
@@ -119,7 +161,7 @@ export default function About() {
                   className="text-center p-6 rounded-2xl glass-effect hover:shadow-xl transition-shadow"
                 >
                   <stat.icon className="text-4xl text-primary-700 mx-auto mb-3" />
-                  <p className="text-3xl font-bold text-dark mb-2">{stat.number}</p>
+                  <p className="text-2xl sm:text-3xl font-bold text-dark mb-2">{stat.number}</p>
                   <p className="text-gray-600 font-medium">{stat.label}</p>
                 </motion.div>
               ))}
@@ -133,7 +175,7 @@ export default function About() {
             >
               <a
                 href="#contact"
-                className="inline-block bg-gradient-to-r from-primary-700 to-accent-500 text-white px-8 py-4 rounded-full font-semibold text-lg hover:shadow-2xl transform hover:scale-105 transition-all"
+                className="inline-block bg-gradient-to-r from-primary-700 to-accent-500 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold text-lg hover:shadow-2xl transform hover:scale-105 transition-all"
               >
                 Learn More About Us
               </a>
