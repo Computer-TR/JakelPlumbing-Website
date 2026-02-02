@@ -22,8 +22,8 @@ export default function Services() {
     },
     {
       icon: FaTractor,
-      title: 'Excavation',
-      description: 'Professional excavation services for construction, utilities, and land preparation projects.',
+      title: 'Excavation and Boring',
+      description: 'Professional excavation and horizontal boring services for construction, utilities, and land preparation. Specialized in underground installations with minimal surface disruption.',
     },
     {
       icon: FaWater,
