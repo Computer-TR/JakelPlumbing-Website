@@ -194,7 +194,7 @@ export default function Footer() {
             </div>
 
             <p className="text-gray-400 mb-6 leading-relaxed">
-              Your trusted partner for plumbing, heating, and electrical services since 1993. Professional, reliable, and available when you need us.
+              Your trusted partner for plumbing, heating, cooling and electrical services since 1993. Professional, reliable, and available when you need us.
             </p>
 
             <div className="flex space-x-4">
@@ -293,7 +293,7 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="border-t border-gray-700 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
           <p className="text-gray-400 text-sm">
-            © {currentYear} Jakel Plumbing, Heating & Electrical, Inc. All rights reserved.
+            © {currentYear} Jakel Plumbing, Heating & Electrical Contractors Inc. All rights reserved.
           </p>
           <div className="flex space-x-6 text-sm">
             <Link href="#" className="text-gray-400 hover:text-accent-500 transition-colors">
