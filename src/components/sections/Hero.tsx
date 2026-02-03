@@ -176,7 +176,7 @@ export default function Hero() {
             </h1>
 
             <p className="text-xl text-gray-600 leading-relaxed">
-              Jakel Plumbing, Heating & Electrical has been serving Wisconsin with professional services for residential, commercial, agricultural, and industrial clients since 1993.
+              Jakel Plumbing, Heating & Electrical Contractros Inc has been serving Wisconsin with professional services for residential, commercial, agricultural, and industrial clients since 1993.
             </p>
 
             <div className="flex flex-wrap gap-6">
