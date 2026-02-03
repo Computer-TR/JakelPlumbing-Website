@@ -12,7 +12,7 @@ export default function Services() {
     },
     {
       icon: FaFire,
-      title: 'Heating Systems',
+      title: 'Heating & Cooling Systems',
       description: 'Expert heating system installation, repair, and maintenance to keep you warm year-round.',
     },
     {
