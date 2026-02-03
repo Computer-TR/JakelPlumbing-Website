@@ -61,7 +61,7 @@ export default function Contact() {
             Contact Us Today
           </h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Have a plumbing, heating, or electrical need? We're here to help with expert service you can trust.
+            Have a plumbing, heating, cooling or electrical need? We're here to help with expert service you can trust.
           </p>
         </motion.div>
 
