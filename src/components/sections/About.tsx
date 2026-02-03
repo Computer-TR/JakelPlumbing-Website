@@ -145,7 +145,7 @@ export default function About() {
                 Jakel Plumbing, Heating & Electrical Contractors, Inc. is a full-service mechanical and electrical contracting business based in Abbotsford, Wisconsin. Founded in 1993 by Paul A. Jakel, we've been serving clients throughout Wisconsin for over three decades.
               </p>
               <p className="text-sm sm:text-base md:text-lg text-gray-600 leading-relaxed">
-                We specialize in plumbing, heating, electrical installation and repair, excavation, water system and cross-connection services, and soil testing/septic systems for residential, commercial, agricultural, food, and industrial sectors.
+                We specialize in plumbing, heating, cooling, electrical installation and repair, excavation, water system and cross-connection services, and soil testing/septic systems for residential, commercial, agricultural, food, and industrial sectors.
               </p>
             </div>
 
