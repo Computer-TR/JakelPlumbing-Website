@@ -291,30 +291,34 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-gray-700 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-          <p className="text-gray-400 text-sm">
-            © {currentYear} Jakel Plumbing, Heating & Electrical Contractors Inc. All rights reserved.
-            {' '}Developed by{' '}
+        <div className="border-t border-gray-700 mt-12 pt-8">
+          <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+            <p className="text-gray-400 text-sm">
+              © {currentYear} Jakel Plumbing, Heating & Electrical Contractors Inc. All rights reserved.
+            </p>
+            <div className="flex space-x-6 text-sm">
+              <Link href="#" className="text-gray-400 hover:text-accent-500 transition-colors">
+                Privacy Policy
+              </Link>
+              <Link href="#" className="text-gray-400 hover:text-accent-500 transition-colors">
+                Terms of Service
+              </Link>
+              <Link href="#" className="text-gray-400 hover:text-accent-500 transition-colors">
+                Sitemap
+              </Link>
+            </div>
+          </div>
+          <p className="text-gray-400 text-sm text-center mt-6">
+            Developed by{' '}
             <a
               href="https://aiotalabs.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-400 hover:text-accent-500 transition-colors"
+              className="hover:text-accent-500 transition-colors"
             >
               AIOTA Labs
             </a>
           </p>
-          <div className="flex space-x-6 text-sm">
-            <Link href="#" className="text-gray-400 hover:text-accent-500 transition-colors">
-              Privacy Policy
-            </Link>
-            <Link href="#" className="text-gray-400 hover:text-accent-500 transition-colors">
-              Terms of Service
-            </Link>
-            <Link href="#" className="text-gray-400 hover:text-accent-500 transition-colors">
-              Sitemap
-            </Link>
-          </div>
         </div>
       </div>
     </footer>
