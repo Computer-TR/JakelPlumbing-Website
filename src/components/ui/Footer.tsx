@@ -308,7 +308,7 @@ export default function Footer() {
               </Link>
             </div>
           </div>
-          <p className="text-gray-400 text-sm text-center mt-6">
+          <p className="text-gray-400 text-sm mt-4">
             Developed by{' '}
             <a
               href="https://aiotalabs.com"
