@@ -294,6 +294,15 @@ export default function Footer() {
         <div className="border-t border-gray-700 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
           <p className="text-gray-400 text-sm">
             © {currentYear} Jakel Plumbing, Heating & Electrical Contractors Inc. All rights reserved.
+            {' '}Developed by{' '}
+            <a
+              href="https://aiotalabs.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-400 hover:text-accent-500 transition-colors"
+            >
+              AIOTA Labs
+            </a>
           </p>
           <div className="flex space-x-6 text-sm">
             <Link href="#" className="text-gray-400 hover:text-accent-500 transition-colors">
